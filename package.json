@@ -1,0 +1,13 @@
+{
+  "name": "wedding-constructor",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev:shell": "pnpm --filter shell dev",
+    "dev": "pnpm --parallel --filter \"./apps/*\" dev",
+    "build": "pnpm -r build"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
