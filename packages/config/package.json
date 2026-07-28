@@ -1,0 +1,13 @@
+{
+  "name": "@wedding/config",
+  "private": true,
+  "version": "0.0.1",
+  "exports": {
+    "./tailwind.preset": "./tailwind.preset.js",
+    "./tailwind.config": "./tailwind.config.js",
+    "./webpack": "./webpack/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1"
+  }
+}
