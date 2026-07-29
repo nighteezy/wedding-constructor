@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@wedding/entity-wedding": ["../entities/wedding/src/index.ts"]
+    }
+  },
+  "include": ["src"]
+}

@@ -1,0 +1,38 @@
+{
+  "name": "api",
+  "private": true,
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "nest start --watch",
+    "clean": "node scripts/clean-build.cjs",
+    "build": "nest build",
+    "start": "node dist/main.js",
+    "postinstall": "node scripts/prisma-cli.cjs generate",
+    "predev": "node scripts/prisma-cli.cjs generate",
+    "prebuild": "node scripts/prisma-cli.cjs generate",
+    "prisma:generate": "node scripts/prisma-cli.cjs generate",
+    "prisma:migrate": "node scripts/prisma-cli.cjs migrate dev",
+    "prisma:seed": "node scripts/prisma-cli.cjs db seed"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.1.6",
+    "@nestjs/core": "^11.1.6",
+    "@nestjs/platform-express": "^11.1.6",
+    "@prisma/client": "^6.16.2",
+    "dotenv": "^16.6.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.10",
+    "@nestjs/schematics": "^11.0.7",
+    "@types/express": "^5.0.3",
+    "@types/node": "^22.18.6",
+    "prisma": "^6.16.2",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.8.3"
+  },
+  "prisma": {
+    "seed": "node -r ./scripts/load-root-env.cjs -r ts-node/register prisma/seed.ts"
+  }
+}

@@ -4,7 +4,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@wedding/ui": ["../../packages/ui/src/index.ts"],
-      "@wedding/ui/*": ["../../packages/ui/src/*"]
+      "@wedding/ui/*": ["../../packages/ui/src/*"],
+      "@wedding/entity-wedding": ["../../packages/entities/wedding/src/index.ts"],
+      "@wedding/api-client": ["../../packages/api/src/index.ts"]
     }
   },
   "include": ["src"]

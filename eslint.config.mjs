@@ -19,7 +19,12 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   eslintConfigPrettier,
   {
-    files: ["**/*.{ts,tsx}"],
+    files: [
+      "apps/shell/**/*.{ts,tsx}",
+      "apps/invitation/**/*.{ts,tsx}",
+      "packages/ui/**/*.{ts,tsx}",
+      "packages/api/**/*.{ts,tsx}",
+    ],
     plugins: {
       react,
       "react-hooks": reactHooks,
@@ -42,6 +47,18 @@ export default tseslint.config(
       ...reactHooks.configs.recommended.rules,
       "react/react-in-jsx-scope": "off",
       "react/prop-types": "off",
+    },
+  },
+  {
+    files: ["apps/api/**/*.ts", "apps/api/prisma/**/*.ts"],
+    languageOptions: {
+      ecmaVersion: "latest",
+      sourceType: "module",
+      globals: globals.node,
+      parserOptions: {
+        project: ["apps/api/tsconfig.eslint.json"],
+        tsconfigRootDir: import.meta.dirname,
+      },
     },
   },
   {

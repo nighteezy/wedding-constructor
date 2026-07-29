@@ -1,12 +1,15 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const {
   ModuleFederationPlugin,
 } = require("@module-federation/enhanced/webpack");
 const {
-  UI_SRC,
+  getTranspileInclude,
   getPort,
   getPublicPath,
+  getApiUrl,
+  getWeddingSlug,
   createPostcssOptions,
 } = require("./env");
 
@@ -14,6 +17,7 @@ const SHARED_DEPENDENCIES = {
   react: { singleton: true, requiredVersion: "^19.0.0" },
   "react-dom": { singleton: true, requiredVersion: "^19.0.0" },
   "react-router-dom": { singleton: true },
+  "@tanstack/react-query": { singleton: true, requiredVersion: "^5.0.0" },
 };
 
 function createBaseConfig(appDir, { portEnvKey, portFallback, publicPathEnvKey }) {
@@ -55,7 +59,7 @@ function createBaseConfig(appDir, { portEnvKey, portFallback, publicPathEnvKey }
             loader: "ts-loader",
             options: { transpileOnly: true },
           },
-          include: [path.resolve(appDir, "src"), UI_SRC],
+          include: getTranspileInclude(appDir),
         },
         {
           test: /\.css$/,
@@ -72,6 +76,10 @@ function createBaseConfig(appDir, { portEnvKey, portFallback, publicPathEnvKey }
     },
     plugins: [
       new HtmlWebpackPlugin({ template: path.resolve(appDir, "public/index.html") }),
+      new webpack.DefinePlugin({
+        "process.env.API_URL": JSON.stringify(getApiUrl()),
+        "process.env.WEDDING_SLUG": JSON.stringify(getWeddingSlug()),
+      }),
     ],
   };
 }

@@ -10,7 +10,10 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.18.1",
-    "@wedding/ui": "workspace:*"
+    "@tanstack/react-query": "^5.90.12",
+    "@wedding/api-client": "workspace:*",
+    "@wedding/ui": "workspace:*",
+    "@wedding/entity-wedding": "workspace:*"
   },
   "devDependencies": {
     "@module-federation/enhanced": "^2.8.0",
